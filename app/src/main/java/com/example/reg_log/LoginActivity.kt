@@ -52,7 +52,12 @@ class LoginActivity : AppCompatActivity() {
 
                         if (userData != null && userData.password == password){
                             Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this@LoginActivity, AvatarPick::class.java))
+
+                            // Создаем Intent для перехода в AvatarPick и передаем логин
+                            val intent = Intent(this@LoginActivity, AvatarPick::class.java)
+                            intent.putExtra("username", username)
+                            startActivity(intent)
+
                             finish()
                             return
                         }

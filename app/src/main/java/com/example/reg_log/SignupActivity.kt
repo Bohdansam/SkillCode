@@ -51,7 +51,11 @@ class SignupActivity : AppCompatActivity() {
                     val userData = UserData(id, username, password)
                     databaseReference.child(id!!).setValue(userData)
                     Toast.makeText(this@SignupActivity, "Signup Successful", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@SignupActivity, LoginActivity::class.java))
+
+                    // Создаем Intent для перехода в AvatarPick и передаем логин
+                    val intent = Intent(this@SignupActivity, AvatarPick::class.java)
+                    intent.putExtra("username", username)
+                    startActivity(intent)
                     finish()
                 }else{
                     Toast.makeText(this@SignupActivity, "User already exists", Toast.LENGTH_SHORT).show()
